@@ -1,47 +1,79 @@
-import react, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import cyndaquil from "./images/cyndaquil.png"
 import totodile from "./images/totodile.png"
 import chikorita from "./images/chikorita.png"
 import { ImgStl } from "./ImgStl";
-import { Button } from "semantic-ui-react";
 
 const RPS = () => {
-  const [user, setUser] = useState("");
-  const [computer, setComputer] = useState("");
-  const [winner, setWinner] = useState("Pick a Pokemon");
+  const [user, setUser] = useState(null);
+  const [computer, setComputer] = useState(null);
+  const [winner, setWinner] = useState(null);
 
-  const options = ["Fire", "Water", "Grass"]
+  const choices = ["Fire", "Water", "Grass"]
 
   useEffect(() => {
-    win()
+    checkWinner()
   }, [user])
 
-  const win = () => {
-    setComputer(options[Math.floor(Math.random()*3)])
-    switch (user) {
-      case options[1]:
-        break
+  const handleClick = (value) => {
+    setUser(value)
+    computerRandom()
+  }
+
+  const computerRandom = () => {
+    setComputer(choices[Math.floor(Math.random() * 3)])
+  }
+
+  const checkWinner = () => {
+    switch (true) {
+
+      case (computer !== null && computer === user):
+        setWinner("Tie")
+        break;
+
+      case (user === choices[0]):
+        if(computer === choices[1]){
+          setWinner("You Lose")
+        } else{
+          setWinner("You Win!")
+        }
+        break;
+
+      case (user === choices[1]):
+        if(computer === choices[2]){
+          setWinner("You Lose")
+        } else{
+          setWinner("You Win!")
+        }
+        break;
+
+      case (user === choices[2]):
+        if(computer === choices[0]){
+          setWinner("You Lose")
+        } else{
+          setWinner("You Win!")
+        }
+        break;
+        
+      default:
+        if(computer === null){
+          console.log(computer)
+          return setWinner("Please pick a Pokemon")
+        }
+        break;
     }
   }
 
-  const restart = () => {
-    setUser("")
-    setComputer("")
-  }
 
-
-  return(
+  return (
     <div>
       <h1>Welcome to Rock, Paper, Scissors</h1>
       <h2>{winner}</h2>
-      <h3>You: {JSON.stringify(user)}</h3>
-      <h3>Computer: {JSON.stringify(computer)}</h3>
-      <div>
-        <ImgStl src={cyndaquil} onCLick = {() => setUser(options[0])}/>
-        <ImgStl src={totodile} onCLick = {() => setUser(options[1])}/>
-        <ImgStl src={chikorita} onCLick = {() => setUser(options[2])}/>
-      </div>
-      <Button onClick = {() => {restart()}}>Start Over</Button>
+      <h3>You: {user}</h3>
+      <h3>Computer: {computer}</h3>
+      <ImgStl src={cyndaquil} onClick={() => handleClick(choices[0])} />
+      <ImgStl src={totodile} onClick={() => handleClick(choices[1])} />
+      <ImgStl src={chikorita} onClick={() => handleClick(choices[2])} />
     </div>
   )
 };
