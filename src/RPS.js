@@ -67,7 +67,7 @@ const RPS = () => {
 
   return (
     <div>
-      <h1>Welcome to Rock, Paper, Scissors</h1>
+      <h1>Welcome to Rock, Paper, Scissors(Pokemon Version)</h1>
       <h2>{winner}</h2>
       <h3>You: {user}</h3>
       <h3>Computer: {computer}</h3>
