@@ -68,3 +68,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### Images used
+
+Cyndaquil: https://assets.pokemon.com/assets/cms2/img/pokedex/full/155.png
+Totodile: https://assets.pokemon.com/assets/cms2/img/pokedex/full/158.png
+Chikorita: https://assets.pokemon.com/assets/cms2/img/pokedex/full/152.png
